@@ -31,6 +31,9 @@ This program is a **C-based healthcare queue visualizer** designed to represent 
 This representation helps visualize patient load and capacity for each department.
 
 ---
+**Compile the Program**
+make patients
 
-## Example Execution
-#### Input:
+---
+**Run the Program**
+./patients
