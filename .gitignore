@@ -1,52 +1,49 @@
-# Prerequisites
-*.d
+#include <cs50.h>
+#include <stdio.h>
 
-# Object files
-*.o
-*.ko
-*.obj
-*.elf
+void print_row(int length, int total_height, string department);
 
-# Linker output
-*.ilk
-*.map
-*.exp
+int main(void)
+{
+    string departments[] = {
+        "Critical Care Unit (CCU)",
+        "Emergency Room (ER)",
+        "Surgical Ward",
+        "Outpatient Services",
+        "Pediatrics",
+        "Radiology and Imaging",
+        "Pharmacy Services",
+        "General Consultation"
+    };
 
-# Precompiled Headers
-*.gch
-*.pch
+    int height;
 
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
+    do
+    {
+        height = get_int("Enter number of departments (1-8): ");
+    }
+    while (height < 1 || height > 8);
 
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
+    for (int i = 0; i < height; i++)
+    {
+        print_row(i + 1, height, departments[i]);
+    }
 
-# Executables
-*.exe
-*.out
-*.app
-*.i*86
-*.x86_64
-*.hex
+    return 0;
+}
 
-# Debug files
-*.dSYM/
-*.su
-*.idb
-*.pdb
+void print_row(int length, int total_height, string department)
+{
+    printf("%-24s: ", department);
 
-# Kernel Module Compile Results
-*.mod*
-*.cmd
-.tmp_versions/
-modules.order
-Module.symvers
-Mkfile.old
-dkms.conf
+    for (int i = 0; i < total_height - length; i++)
+    {
+        printf(" ");
+    }
+
+    for (int i = 0; i < length; i++)
+    {
+        printf("#");
+    }
+    printf("\n");
+}
